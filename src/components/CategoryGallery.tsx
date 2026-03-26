@@ -83,7 +83,35 @@ const categories: Category[] = [
 const CategoryGallery = () => {
   const [activeCategory, setActiveCategory] = useState<Category | null>(null);
   const [lightbox, setLightbox] = useState<PortfolioItem | null>(null);
-  const ref = useScrollAnimation();
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Re-trigger scroll animations when view changes
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+    );
+
+    // Small delay to ensure DOM has updated
+    const timer = setTimeout(() => {
+      const children = el.querySelectorAll(".animate-scroll-fade");
+      children.forEach((child) => observer.observe(child));
+    }, 50);
+
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
+  }, [activeCategory]);
 
   return (
     <section id="portfolio" className="py-24 px-6" ref={ref}>
