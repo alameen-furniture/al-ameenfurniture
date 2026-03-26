@@ -189,12 +189,16 @@ const CategoryGallery = () => {
 
       {/* Lightbox */}
       <Dialog open={!!lightbox} onOpenChange={() => setLightbox(null)}>
-        <DialogContent className="max-w-4xl bg-card border-border p-2">
+        <DialogContent className="max-w-[95vw] sm:max-w-3xl bg-transparent border-none p-0 shadow-none [&>button]:text-white [&>button]:bg-black/60 [&>button]:rounded-full [&>button]:p-1.5 [&>button]:top-2 [&>button]:right-2">
           {lightbox && (
-            <div>
-              <img src={lightbox.image} alt={lightbox.title} className="w-full rounded-lg" />
-              <div className="p-4">
-                <p className="text-foreground font-serif text-xl font-semibold">
+            <div className="flex flex-col items-center">
+              <img
+                src={lightbox.image}
+                alt={lightbox.title}
+                className="w-full max-h-[80vh] object-contain rounded-lg"
+              />
+              <div className="w-full bg-card/90 backdrop-blur-sm rounded-b-lg px-4 py-3 -mt-1">
+                <p className="text-foreground font-serif text-lg font-semibold">
                   {lightbox.title}
                 </p>
               </div>
