@@ -161,8 +161,8 @@ const TestimonialsSection = () => {
     el.scrollBy({ left: amount, behavior: "smooth" });
   };
 
-  const avgRating = googleRating || (reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length);
-  const reviewCount = totalReviews || reviews.length;
+  const avgRating = reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length;
+  const reviewCount = reviews.length;
 
   return (
     <section ref={sectionRef} className="py-24 overflow-hidden">
@@ -193,15 +193,7 @@ const TestimonialsSection = () => {
           </div>
         </div>
 
-        {/* Loading state */}
-        {loading && (
-          <div className="flex justify-center py-12">
-            <Loader2 className="w-6 h-6 text-primary animate-spin" />
-          </div>
-        )}
-
         {/* Carousel */}
-        {!loading && (
           <div className="relative animate-scroll-fade">
             <button
               onClick={() => scroll("left")}
@@ -235,8 +227,7 @@ const TestimonialsSection = () => {
                 <ReviewCard key={review.id} review={review} index={i} />
               ))}
             </div>
-          </div>
-        )}
+        </div>
       </div>
     </section>
   );
