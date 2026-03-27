@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Star, Quote, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
+import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 
 type Review = {
   id: string;
@@ -121,34 +120,7 @@ const TestimonialsSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
-  const [reviews, setReviews] = useState<Review[]>(fallbackReviews);
-  const [googleRating, setGoogleRating] = useState<number | null>(null);
-  const [totalReviews, setTotalReviews] = useState<number | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  // Fetch Google reviews
-  useEffect(() => {
-    const fetchReviews = async () => {
-      try {
-        const { data, error } = await supabase.functions.invoke("google-reviews");
-        if (error) throw error;
-        if (data?.reviews?.length > 0) {
-          // Filter out reviews with no text
-          const validReviews = data.reviews.filter((r: Review) => r.text?.trim());
-          if (validReviews.length > 0) {
-            setReviews(validReviews);
-          }
-          if (data.rating) setGoogleRating(data.rating);
-          if (data.totalReviews) setTotalReviews(data.totalReviews);
-        }
-      } catch (err) {
-        console.log("Using fallback reviews:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchReviews();
-  }, []);
+  const reviews = fallbackReviews;
 
   const updateScrollButtons = () => {
     const el = scrollRef.current;
@@ -189,8 +161,8 @@ const TestimonialsSection = () => {
     el.scrollBy({ left: amount, behavior: "smooth" });
   };
 
-  const avgRating = googleRating || (reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length);
-  const reviewCount = totalReviews || reviews.length;
+  const avgRating = reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length;
+  const reviewCount = reviews.length;
 
   return (
     <section ref={sectionRef} className="py-24 overflow-hidden">
@@ -221,15 +193,7 @@ const TestimonialsSection = () => {
           </div>
         </div>
 
-        {/* Loading state */}
-        {loading && (
-          <div className="flex justify-center py-12">
-            <Loader2 className="w-6 h-6 text-primary animate-spin" />
-          </div>
-        )}
-
         {/* Carousel */}
-        {!loading && (
           <div className="relative animate-scroll-fade">
             <button
               onClick={() => scroll("left")}
@@ -263,8 +227,7 @@ const TestimonialsSection = () => {
                 <ReviewCard key={review.id} review={review} index={i} />
               ))}
             </div>
-          </div>
-        )}
+        </div>
       </div>
     </section>
   );
