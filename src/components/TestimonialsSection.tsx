@@ -20,8 +20,8 @@ const Stars = () => (
 
 const ReviewCard = ({ review, index }: { review: typeof reviews[0]; index: number }) => (
   <div
-    className="flex-shrink-0 w-[85vw] sm:w-[320px] snap-center"
-    style={{ animationDelay: `${index * 80}ms` }}
+    className="flex-shrink-0 w-[85vw] sm:w-[320px] snap-center animate-slide-in"
+    style={{ animationDelay: `${index * 150}ms` }}
   >
     <div className="h-full bg-card border border-border/30 rounded-2xl p-6 flex flex-col gap-4 shadow-lg animate-border-glow hover:shadow-[0_0_25px_hsl(38_45%_60%/0.25)] hover:-translate-y-1 transition-all duration-500">
       <Stars />
