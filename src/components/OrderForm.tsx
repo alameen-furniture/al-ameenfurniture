@@ -26,11 +26,8 @@ const OrderForm = () => {
 
     setIsSubmitting(true);
     try {
-      const { error } = await supabase.from("enquiries" as any).insert({
-        name,
-        phone,
-        email: email || null,
-        requirement: requirement || null,
+      const { error } = await supabase.functions.invoke("notify-enquiry", {
+        body: { name, phone, email: email || null, requirement: requirement || null },
       });
 
       if (error) throw error;
