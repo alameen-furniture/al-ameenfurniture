@@ -192,8 +192,8 @@ const CategoryGallery = () => {
               {activeCategory.items.map((item, i) => (
                 <div
                   key={item.id}
-                  className="group relative aspect-[3/4] rounded-lg overflow-hidden cursor-pointer border border-border/20 hover:border-primary/40 transition-all duration-500 animate-fade-in"
-                  style={{ animationDelay: `${i * 60}ms` }}
+                  className="animate-scroll-fade group relative aspect-[3/4] rounded-lg overflow-hidden cursor-pointer border border-border/20 hover:border-primary/40 hover:-translate-y-1 transition-all duration-500"
+                  style={{ transitionDelay: `${i * 80}ms` }}
                   onClick={() => setLightbox(item)}
                 >
                   <img
