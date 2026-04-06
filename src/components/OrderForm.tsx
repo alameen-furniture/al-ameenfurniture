@@ -10,7 +10,7 @@ const MAX_FILE_SIZE = 5 * 1024 * 1024;
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif"];
 
 const EMAILJS_SERVICE_ID = "service_ds0zywx";
-const EMAILJS_TEMPLATE_ID = "template_g8tcp9s";
+const EMAILJS_TEMPLATE_ID = "template_g9tcp9s";
 const EMAILJS_PUBLIC_KEY = "B6IhTXlygHhFUndHW";
 
 const OrderForm = () => {
