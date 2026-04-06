@@ -132,7 +132,7 @@ const OrderForm = () => {
             </a>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="animate-scroll-fade space-y-5 border border-border rounded-xl bg-card p-8 sm:p-10">
+          <form ref={formRef} onSubmit={handleSubmit} className="animate-scroll-fade space-y-5 border border-border rounded-xl bg-card p-8 sm:p-10">
             <div className="grid sm:grid-cols-2 gap-5">
               <div>
                 <label className="text-sm text-muted-foreground mb-1.5 block">Name *</label>
