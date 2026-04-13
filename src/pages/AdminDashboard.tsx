@@ -165,7 +165,9 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <meta name="robots" content="noindex, nofollow" />
+      <div className="min-h-screen bg-background">
       {previewImage && (
         <div
           className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
@@ -316,6 +318,7 @@ const AdminDashboard = () => {
         )}
       </main>
     </div>
+    </>
   );
 };
 
