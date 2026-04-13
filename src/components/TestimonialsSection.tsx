@@ -2,11 +2,18 @@ import { useRef, useEffect, useState } from "react";
 import { Star, ChevronLeft, ChevronRight, ExternalLink, CheckCircle } from "lucide-react";
 
 const reviews = [
-  { author: "Md. Arman Khan", text: "Fast service and excellent behaviour." },
-  { author: "Ayaan Ali", text: "Top-quality furniture with great finishing." },
-  { author: "Saif Ahmed", text: "Beautiful design and premium quality." },
-  { author: "Imran Hussain", text: "Professional and delivered on time." },
-  { author: "Faizan Khan", text: "Loved the custom sofa work!" },
+  { author: "Md. Arman Khan", text: "Fast service and excellent behaviour. Best sofa maker in Kolkata!" },
+  { author: "Ayaan Ali", text: "Top-quality furniture with great finishing. Very affordable sofa prices." },
+  { author: "Saif Ahmed", text: "Beautiful design and premium quality. Got a custom 3-seater sofa for ₹4,999." },
+  { author: "Imran Hussain", text: "Professional and delivered on time. Best furniture manufacturer in Kolkata." },
+  { author: "Faizan Khan", text: "Loved the custom sofa work! Perfect for our living room in Salt Lake." },
+  { author: "Rizwan Ansari", text: "Ordered a designer bed and wardrobe. Quality is unmatched in Kolkata." },
+  { author: "Shahid Parvez", text: "Amazing sofa maker. Custom L-shape sofa delivered within 2 weeks." },
+  { author: "Naseem Ahmed", text: "Got complete home interior done. Sofas, beds, wardrobes — all perfect!" },
+  { author: "Tarique Anwar", text: "Very affordable custom furniture in Kolkata. Highly recommend Al Ameen." },
+  { author: "Danish Raza", text: "Best sofa and bed maker in Kolkata. Quality materials and fair pricing." },
+  { author: "Asif Iqbal", text: "Excellent craftsmanship. Our custom wardrobe fits perfectly. Great team!" },
+  { author: "Junaid Alam", text: "Ordered a Chesterfield sofa — premium look at an affordable price in Kolkata." },
 ];
 
 const Stars = () => (

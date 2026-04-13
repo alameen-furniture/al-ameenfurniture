@@ -1,5 +1,6 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Star, Users, Award } from "lucide-react";
+import workshopImg from "@/assets/workshop.webp";
 
 const AboutSection = () => {
   const ref = useScrollAnimation();
@@ -10,7 +11,7 @@ const AboutSection = () => {
         <div className="animate-scroll-fade">
           <div className="relative rounded-lg overflow-hidden aspect-[4/5]">
             <img
-              src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=600&q=70"
+              src={workshopImg}
               alt="Al Ameen Furniture workshop — custom furniture craftsmanship in Kolkata"
               className="w-full h-full object-cover"
               loading="lazy"
