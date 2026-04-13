@@ -21,13 +21,6 @@ import bedTealLuxury from "@/assets/portfolio/bed-teal-luxury.webp";
 import bedClassicGrey from "@/assets/portfolio/bed-classic-grey.webp";
 import bedGoldTrim from "@/assets/portfolio/bed-gold-trim.webp";
 
-// Custom Projects
-import bedGoldenWardrobe from "@/assets/portfolio/bed-golden-wardrobe.webp";
-import customTvUnit from "@/assets/portfolio/custom-tv-unit.webp";
-import customWardrobe from "@/assets/portfolio/custom-wardrobe.webp";
-import customDiningSet from "@/assets/portfolio/custom-dining-set.webp";
-import customStudyDesk from "@/assets/portfolio/custom-study-desk.webp";
-import customLivingRoom from "@/assets/portfolio/custom-living-room.webp";
 
 const LazyDialog = lazy(() => import("@/components/ui/dialog").then(m => ({ default: m.Dialog })));
 const LazyDialogContent = lazy(() => import("@/components/ui/dialog").then(m => ({ default: m.DialogContent })));
@@ -45,8 +38,8 @@ type Category = {
 const categories: Category[] = [
   {
     key: "sofas",
-    label: "Sofas",
-    description: "Handcrafted custom sofas in Kolkata",
+    label: "Custom Sofas",
+    description: "Handcrafted custom sofas in Kolkata — Starting ₹4,999",
     cover: sofaVelvet,
     items: [
       { id: 1, title: "Royal Chesterfield Sofa", image: sofaChesterfield },
@@ -61,8 +54,8 @@ const categories: Category[] = [
   },
   {
     key: "beds",
-    label: "Beds",
-    description: "Premium designer beds in Kolkata",
+    label: "Designer Beds",
+    description: "Premium designer beds in Kolkata — Starting ₹6,999",
     cover: bedQuiltedLuxury,
     items: [
       { id: 9, title: "Quilted Luxury Bed", image: bedQuiltedLuxury },
@@ -73,20 +66,6 @@ const categories: Category[] = [
       { id: 14, title: "Teal Luxury Bed", image: bedTealLuxury },
       { id: 15, title: "Classic Grey Bedroom", image: bedClassicGrey },
       { id: 16, title: "Gold Trim Bed", image: bedGoldTrim },
-    ],
-  },
-  {
-    key: "custom",
-    label: "Custom Projects",
-    description: "Bespoke interior furniture in Kolkata",
-    cover: customLivingRoom,
-    items: [
-      { id: 17, title: "Golden Wardrobe & Bed Suite", image: bedGoldenWardrobe },
-      { id: 18, title: "Custom TV Unit with LED", image: customTvUnit },
-      { id: 19, title: "Modern Sliding Wardrobe", image: customWardrobe },
-      { id: 20, title: "Solid Wood Dining Set", image: customDiningSet },
-      { id: 21, title: "Study Desk & Bookshelf", image: customStudyDesk },
-      { id: 22, title: "Complete Living Room Interior", image: customLivingRoom },
     ],
   },
 ];
@@ -130,7 +109,7 @@ const CategoryGallery = () => {
             Portfolio
           </p>
           <h2 className="font-serif text-3xl sm:text-5xl font-bold text-foreground">
-            Premium Sofas, Beds & <span className="text-primary italic">Interiors</span> in Kolkata
+            Custom <span className="text-primary italic">Sofas & Beds</span> in Kolkata
           </h2>
           <div className="w-16 h-[1px] bg-primary mx-auto mt-6" />
         </div>
