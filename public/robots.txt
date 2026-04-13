@@ -12,3 +12,9 @@ Allow: /
 
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /admin/setup
+Disallow: /admin/dashboard
+Disallow: /reset-password
+
+Sitemap: https://alameenfurniture.com/sitemap.xml
