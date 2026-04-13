@@ -135,7 +135,14 @@ const Footer = () => {
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} Al Ameen Furniture. All rights reserved.
           </p>
-          <p className="text-xs text-muted-foreground text-center sm:text-right">
+          <div className="flex items-center gap-4 text-xs text-muted-foreground">
+            <a href="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</a>
+            <span>·</span>
+            <a href="/terms" className="hover:text-primary transition-colors">Terms & Conditions</a>
+          </div>
+        </div>
+        <div className="max-w-6xl mx-auto px-6 pb-4">
+          <p className="text-xs text-muted-foreground text-center">
             Custom Furniture Manufacturer in Kolkata · Sofas · Beds · Wardrobes · Home Interiors · Serving All Areas of Kolkata
           </p>
         </div>
