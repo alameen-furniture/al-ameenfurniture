@@ -116,7 +116,7 @@ const CategoryGallery = () => {
             Portfolio
           </p>
           <h2 className="font-serif text-3xl sm:text-5xl font-bold text-foreground">
-            Premium Sofas, Beds & <span className="text-primary italic">Interiors</span> in Kolkata
+            Custom <span className="text-primary italic">Sofas & Beds</span> in Kolkata
           </h2>
           <div className="w-16 h-[1px] bg-primary mx-auto mt-6" />
         </div>
