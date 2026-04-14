@@ -26,6 +26,14 @@ const AdminSetup = () => {
     checkExistingAdmin();
   }, []);
 
+  useEffect(() => {
+    const meta = document.createElement('meta');
+    meta.name = 'robots';
+    meta.content = 'noindex, nofollow';
+    document.head.appendChild(meta);
+    return () => { document.head.removeChild(meta); };
+  }, []);
+
   const handleSetup = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -45,7 +53,6 @@ const AdminSetup = () => {
       if (error) throw error;
       if (!data.user) throw new Error("Signup failed");
 
-      // Assign admin role via edge function
       const { data: roleResult, error: roleError } = await supabase.functions.invoke("assign-admin", {
         body: { user_id: data.user.id },
       });
@@ -57,7 +64,6 @@ const AdminSetup = () => {
         return;
       }
 
-      // Check if the function returned an error (admin already exists)
       if (roleResult?.error) {
         toast({ title: roleResult.error, variant: "destructive" });
         setAdminExists(true);
@@ -94,14 +100,6 @@ const AdminSetup = () => {
       </div>
     );
   }
-
-  useEffect(() => {
-    const meta = document.createElement('meta');
-    meta.name = 'robots';
-    meta.content = 'noindex, nofollow';
-    document.head.appendChild(meta);
-    return () => { document.head.removeChild(meta); };
-  }, []);
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center px-4">
