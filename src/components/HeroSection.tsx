@@ -15,10 +15,10 @@ const HeroSection = () => {
 
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto pt-16">
         {/* Urgency banner */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/40 bg-primary/10 backdrop-blur-sm mb-6">
-          <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/40 bg-primary/10 backdrop-blur-sm mb-6 animate-blink-offer">
+          <span className="w-2 h-2 rounded-full bg-primary" />
           <span className="text-primary text-sm font-medium tracking-wide">
-            🔥 Limited Time — 20% OFF for Online Customers
+            🔥 Hurry Up — 20% OFF for Online Customers
           </span>
         </div>
 
