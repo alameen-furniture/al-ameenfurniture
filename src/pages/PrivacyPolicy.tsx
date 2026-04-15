@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 
 const PrivacyPolicy = () => {
@@ -10,9 +11,9 @@ const PrivacyPolicy = () => {
     <div className="min-h-screen bg-background">
       <header className="border-b border-border bg-card/30">
         <div className="max-w-3xl mx-auto px-6 py-6 flex items-center gap-4">
-          <a href="/" className="text-muted-foreground hover:text-primary transition-colors">
+          <Link to="/" className="text-muted-foreground hover:text-primary transition-colors">
             <ArrowLeft className="w-5 h-5" />
-          </a>
+          </Link>
           <h1 className="font-serif text-2xl font-bold text-foreground">Privacy Policy</h1>
         </div>
       </header>
