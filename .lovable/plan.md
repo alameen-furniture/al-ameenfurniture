@@ -1,60 +1,34 @@
 
 
-# Al Ameen Furniture — Premium Portfolio Website
+# Fix Quick Links Navigation
 
-## Design System
-- **Background**: Rich black (#0a0a0a) with gold accents (#c9a96e, #d4af37)
-- **Typography**: Playfair Display (serif) for headings, Inter (sans-serif) for body
-- **Animations**: Scroll-triggered fade-in/slide-up, hover zoom on images, gold glow on buttons, smooth parallax hero
+## Problem
+The app uses `HashRouter`, which means the URL already contains `#` for routing (e.g., `/#/privacy-policy`). When you click `href="#portfolio"`, the browser treats it as a route change (navigating to `/#portfolio` instead of `/#/` with a scroll to the `portfolio` element), causing a 404 from the catch-all route.
 
-## Pages & Sections (Single Page)
+## Solution
+Create a shared navigation helper that:
+1. If already on the homepage — smoothly scrolls to the target section
+2. If on another page (Terms, Privacy, Admin) — navigates to `/` first, then scrolls after the page loads
 
-### 1. Hero Section
-- Full-screen dark overlay with slow-zoom background image
-- "Crafting Premium Custom Furniture in Kolkata" heading with elegant fade-in
-- Two CTAs: WhatsApp link + scroll-to-quote-form
-- Subtle gradient animation in background
+Replace all `<a href="#section">` links with click handlers using this helper across Navbar, Footer, and AboutSection.
 
-### 2. Portfolio Gallery
-- Category filter tabs (Sofas, Beds, Wardrobes, Custom Projects)
-- Masonry/grid layout with large placeholder images
-- Hover: smooth zoom + dark overlay with project name
-- Lightbox modal for full-screen image viewing on click
+## Files to Change
 
-### 3. About Section
-- Split layout with image and text, fade-in on scroll
-- Key stats: 50+ customers, 5-star reviews
+### 1. New: `src/utils/scrollToSection.ts`
+- A helper function `scrollToSection(sectionId, navigate)` that:
+  - Checks current route — if on homepage, does `document.getElementById(id).scrollIntoView({ behavior: 'smooth' })`
+  - If on another page, calls `navigate("/")` then uses a short timeout to scroll after mount
 
-### 4. Why Choose Us
-- 4 feature cards with gold icons
-- Custom Design, Premium Materials, Skilled Craftsmanship, Trusted by Customers
-- Hover lift + glow animation
+### 2. `src/components/Navbar.tsx`
+- Import `useNavigate` from react-router-dom and the scroll helper
+- Replace all `<a href="#...">` with `<a onClick={...}>` or `<button>` using the scroll helper
+- Replace brand logo `<a href="#">` with `<Link to="/">`
 
-### 5. Custom Order Form
-- Elegant dark-themed form: Name, Phone, Email, Requirement, Image Upload
-- Gold-bordered inputs, animated submit button
-- Success toast with WhatsApp redirect suggestion
-- Email action to akbarkhan891071@gmail.com (mailto fallback)
+### 3. `src/components/Footer.tsx`
+- Same treatment for the 5 quick links — use click handlers with the scroll helper
 
-### 6. WhatsApp CTA Banner
-- Full-width section with pulsing gold WhatsApp button
-- Links to wa.me with pre-filled message
+### 4. `src/components/AboutSection.tsx`
+- Replace `<a href="#portfolio">` with click handler using scroll helper
 
-### 7. Contact Section
-- Phone, email, address displayed elegantly
-- Embedded Google Maps iframe for the Kolkata address
-
-### 8. Footer
-- Minimal dark footer with quick links and contact info
-
-### Floating Elements
-- Sticky WhatsApp button (bottom-right, pulse animation)
-- Mobile call button
-- Smooth scroll navigation
-
-### Technical
-- Intersection Observer for scroll animations
-- Responsive design (mobile-first)
-- Google Fonts: Playfair Display + Inter
-- High-quality Unsplash furniture images as placeholders
+No routing changes needed. HashRouter stays as-is.
 
